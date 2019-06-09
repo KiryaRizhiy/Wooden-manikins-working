@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 03657fb04c76ad0488b0dd20309d8b50
+timeCreated: 1527619764
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - _MaterialContainer: {fileID: 1848215704426148, guid: 71cf629b6e98ff64ab2a2f1becfe9f21,
+      type: 2}
+  - _BrickPrefab: {fileID: 1594910338280156, guid: 1446fe80d47dce6478f77b437f7a35d3,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

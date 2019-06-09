@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LangVersion>4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{3540E90B-04F2-E017-F1E2-851E3661B5DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_1_0;UNITY_2017_1;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Common_scripts\camera_move.cs" />
+     <Compile Include="Assets\Common_scripts\light_script.cs" />
+     <Compile Include="Assets\Common_scripts\Links.cs" />
+     <Compile Include="Assets\Common_scripts\Log.cs" />
+     <Compile Include="Assets\Common_scripts\LogSettings.cs" />
+     <Compile Include="Assets\Common_scripts\Map.cs" />
+     <Compile Include="Assets\Common_scripts\MapGenerator.cs" />
+     <Compile Include="Assets\Common_scripts\NameValue.cs" />
+     <Compile Include="Assets\Common_scripts\Player_control_script.cs" />
+     <Compile Include="Assets\Common_scripts\Settings.cs" />
+     <Compile Include="Assets\Objects\Brick\Object_Scripts\Brick.cs" />
+     <Compile Include="Assets\Objects\Brick\Object_Scripts\Kernel.cs" />
+     <Compile Include="Assets\Objects\CommonScripts\Basic.cs" />
+     <Compile Include="Assets\Objects\CommonScripts\FigureParams.cs" />
+     <Compile Include="Assets\Objects\CommonScripts\Functions.cs" />
+     <Compile Include="Assets\Objects\CommonScripts\Highlighter.cs" />
+     <Compile Include="Assets\Objects\CommonScripts\PhantomConstruction.cs" />
+     <Compile Include="Assets\Objects\CommonScripts\Sack.cs" />
+     <Compile Include="Assets\Objects\Processes\ProcessManager.cs" />
+     <Compile Include="Assets\Objects\Resource\Object_Scripts\Deposit.cs" />
+     <Compile Include="Assets\Objects\Resource\Object_Scripts\Resource.cs" />
+     <Compile Include="Assets\Objects\Resource\Object_Scripts\Resources.cs" />
+     <Compile Include="Assets\Objects\Structure\Building_Creator_Interface.cs" />
+     <Compile Include="Assets\Objects\Structure\Structure.cs" />
+     <Compile Include="Assets\Objects\Structure\Structures.cs" />
+     <Compile Include="Assets\Objects\Structure\tree\Tree.cs" />
+     <Compile Include="Assets\Objects\Unit\Object_Scripts\Route.cs" />
+     <Compile Include="Assets\Objects\Unit\Object_Scripts\RouteBuilder.cs" />
+     <Compile Include="Assets\Objects\Unit\Object_Scripts\Routes.cs" />
+     <Compile Include="Assets\Objects\Unit\Object_Scripts\Unit.cs" />
+     <Compile Include="Assets\Objects\Unit\Object_Scripts\Unit_config_reader.cs" />
+     <Compile Include="Assets\Objects\Unit\Object_Scripts\Units.cs" />
+     <Compile Include="Assets\Objects\Workbench\Workbench.cs" />
+     <Compile Include="Assets\Objects\Workbench\Workbenches.cs" />
+     <Compile Include="Assets\Objects\Zone\Zone_old.cs" />
+     <Compile Include="Assets\Objects\Zone\ZoneController.cs" />
+     <Compile Include="Assets\Objects\Zone\ZoneInteractor.cs" />
+     <Compile Include="Assets\UI\Scripts\UI.cs" />
+     <Compile Include="Assets\UI\Scripts\UICameraFollower.cs" />
+     <Compile Include="Assets\UI\Scripts\UIInfoActualizer.cs" />
+     <Compile Include="Assets\UI\Scripts\UIInfoComponent.cs" />
+     <Compile Include="Assets\UI\Scripts\UIInfoFrame.cs" />
+     <Compile Include="Assets\UI\Scripts\UIMainMenu.cs" />
+     <Compile Include="Assets\UI\Scripts\UIMainMenuElement.cs" />
+     <Compile Include="Assets\UI\Scripts\UISettings.cs" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Timeline">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

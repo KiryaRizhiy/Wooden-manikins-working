@@ -1,0 +1,55 @@
+﻿<!ELEMENT Actions (Action)>
+<!ELEMENT Action (ActionID, ActionName, Conditions, WorkFlow, Effects)>
+<!ELEMENT ActionID (#PCDATA)>
+<!ELEMENT ActionName (#PCDATA)>
+<!ELEMENT Conditions (DistanceToTarget, TargetHasAResources, ActorHasAResource, TargetHasAFreeSpace, Busyness, Knowledges, NeedATarget)>
+<!ELEMENT DistanceToTarget (From, To)>
+<!ELEMENT From (#PCDATA)>
+<!ELEMENT To (#PCDATA)>
+<!ELEMENT TargetHasAResources (ResurceType, Count)>
+<!ELEMENT ResurceType (#PCDATA)>
+<!ELEMENT Count (#PCDATA)>
+<!ELEMENT ActorHasAResource (ResurceType, Count)>
+<!ELEMENT TargetHasAFreeSpace (#PCDATA)>
+<!ELEMENT Busyness (Target, Actor)>
+<!ELEMENT Target (Strength?, Agility?, Intellect?, Wisdom?, Hunger?, Sleepy?, Tried?, Hygiene?, Mood?)>
+<!ELEMENT Actor (Strength?, Agility?, Intellect?, Wisdom?, Hunger?, Sleepy?, Tried?, Hygiene?, Mood?)>
+<!ELEMENT Knowledges (Knowledge)>
+<!ELEMENT Knowledge (KnowledgeID, KnowledgeLevel)>
+<!ELEMENT KnowledgeID (#PCDATA)>
+<!ELEMENT KnowledgeLevel (#PCDATA)>
+<!ELEMENT NeedATarget (Unit, Block, Mashine)>
+<!ELEMENT Unit (#PCDATA)>
+<!ELEMENT Block (#PCDATA)>
+<!ELEMENT Mashine (#PCDATA)>
+<!ELEMENT WorkFlow (LeadTime, SetBusy, Graphics, Methods)>
+<!ELEMENT LeadTime (Value, Influence)>
+<!ELEMENT Value (#PCDATA)>
+<!ELEMENT Influence (Strength, Agility, Intellect, Wisdom)>
+<!ELEMENT Strength (#PCDATA)>
+<!ELEMENT Agility (#PCDATA)>
+<!ELEMENT Intellect (#PCDATA)>
+<!ELEMENT Wisdom (#PCDATA)>
+<!ELEMENT SetBusy (Actor, Target)>
+<!ELEMENT Graphics (Actor, Target)>
+<!ELEMENT Methods (Actor, Target)>
+<!ELEMENT Effects (AddSyndrom, CharacteristicsInfluence, RemoveTarget, CreateResource, CreateBlock, BreakAction, SetBusinessToFalse)>
+<!ELEMENT AddSyndrom (Actor, Target)>
+<!ELEMENT CharacteristicsInfluence (Actor, Target)>
+<!ELEMENT Hunger (#PCDATA)>
+<!ELEMENT Sleepy (#PCDATA)>
+<!ELEMENT Tried (#PCDATA)>
+<!ELEMENT Hygiene (#PCDATA)>
+<!ELEMENT Mood (#PCDATA)>
+<!ELEMENT RemoveTarget (#PCDATA)>
+<!ELEMENT CreateResource (ResourceType, Count, PutInto)>
+<!ELEMENT ResourceType (#PCDATA)>
+<!ELEMENT PutInto (#PCDATA)>
+<!ELEMENT CreateBlock (Coordinates, BlockType)>
+<!ELEMENT Coordinates (x, y, z)>
+<!ELEMENT x (#PCDATA)>
+<!ELEMENT y (#PCDATA)>
+<!ELEMENT z (#PCDATA)>
+<!ELEMENT BlockType (#PCDATA)>
+<!ELEMENT BreakAction (Actor, Target)>
+<!ELEMENT SetBusinessToFalse (Actor, Target)>
