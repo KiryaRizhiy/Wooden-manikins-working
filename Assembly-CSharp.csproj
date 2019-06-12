@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{3540E90B-04F2-E017-F1E2-851E3661B5DF}</ProjectGuid>
+    <ProjectGuid>{98591B89-6BF8-1AAE-6FFF-79AE55930316}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -88,6 +88,7 @@
      <Compile Include="Assets\Objects\Zone\Zone_old.cs" />
      <Compile Include="Assets\Objects\Zone\ZoneController.cs" />
      <Compile Include="Assets\Objects\Zone\ZoneInteractor.cs" />
+     <Compile Include="Assets\UI\Scripts\StartNewGame.cs" />
      <Compile Include="Assets\UI\Scripts\UI.cs" />
      <Compile Include="Assets\UI\Scripts\UICameraFollower.cs" />
      <Compile Include="Assets\UI\Scripts\UIInfoActualizer.cs" />
