@@ -1,14 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 using UnityEngine;
 
-public static class Map {
+[System.Serializable]
+public class Map {
 
     private static string scr = "Map";
-    public static List<Kernel> Kernels = new List<Kernel>();
+    public static Map CurrentMap;
+    public List<Kernel> Kernels { get; private set; }
+    public string MapName;
 
-    public static IEnumerator InitializeMap()
+    public Map()
     {
+        CurrentMap = this;
+        MapName = Settings.CurrentGame.id.ToString();
+    }
+
+    public IEnumerator InitializeMap()
+    {
+        Kernels = new List<Kernel>();
         for (int i = -Settings.BasicMapRadius; i <= Settings.BasicMapRadius; i++)
             for (int j = -Settings.BasicMapRadius; j <= Settings.BasicMapRadius; j++)
             {
@@ -28,7 +40,7 @@ public static class Map {
     public static Brick GetBrick(Vector3 Coordinates)
     {
         if (BrickExists(Coordinates))
-            return Kernels.Find(x => x.KernelBrickExists(Coordinates)).GetKernelBrick(Coordinates);
+            return CurrentMap.Kernels.Find(x => x.KernelBrickExists(Coordinates)).GetKernelBrick(Coordinates);
         else
             return null;
     }
@@ -58,18 +70,18 @@ public static class Map {
         _obj.transform.position = BasicObjectCoordinates;
         Resources.ExtendDepositsGrid(KernelCoordinates);
         _obj.name = "Kernel " + KernelCoordinates.x + ":" + KernelCoordinates.y;
-        Kernels.Add(_obj.AddComponent<Kernel>());
+        CurrentMap.Kernels.Add(_obj.AddComponent<Kernel>());
     }
     private static Kernel GetKernel(Vector3 Coordinates)
     {
         Vector2 _kernelcoords = ToKernelCoordinates(Coordinates);
-        if (Kernels.Find(x => x.KernelCoordinates == _kernelcoords) == null)
+        if (CurrentMap.Kernels.Find(x => x.KernelCoordinates == _kernelcoords) == null)
         {
             Log.Notice(scr, "No kernel, containing block " + Coordinates + ", found. Kernel " + _kernelcoords + " required");
             return null;
         }
         else
-            return Kernels.Find(x => x.KernelCoordinates == _kernelcoords);
+            return CurrentMap.Kernels.Find(x => x.KernelCoordinates == _kernelcoords);
     }
     private static Vector2 ToKernelCoordinates(Vector3 V3Coordinates)
     {

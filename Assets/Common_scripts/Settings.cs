@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class Settings : MonoBehaviour {
     public static string BuildingsStoragePath { get; private set; }
     public static string TexturesFolderPath { get; private set; }
     public static List<string> ComplexObjectsTags { get; private set; }
+    public static string GameSavingPath { get { return "/SavedGames/Game.svg"; } }
+    public static string MapSavingPath { get { return "/SavedGames/Map.svg"; } }
     
     public static byte KernelSize { get; private set; }
     public static byte MapBlurParam { get; private set; }
@@ -49,10 +52,9 @@ public class Settings : MonoBehaviour {
     //Technical
     private bool ParamsNotSet = true;
     private string scr = "Settings";
+    public static GameLaunchMode LaunchMode = GameLaunchMode.NewGame;
+    public static Game CurrentGame;
 
-    void Start()
-    {
-    }
     public void SetParams()
     {
         if (ParamsNotSet)
@@ -86,7 +88,7 @@ public class Settings : MonoBehaviour {
             MapLandscapeScale = 1;
             BasicMapRadius = 1;
             MaxMapRadius = 1000;
-            NoizeShift = Random.Range(0, MaxMapRadius * KernelSize);
+            NoizeShift = UnityEngine.Random.Range(0, MaxMapRadius * KernelSize);
             MenuTextFont = _MenuTextFont;
             ResourceBasicMaterial = _Material;
 
@@ -96,7 +98,13 @@ public class Settings : MonoBehaviour {
             Workbenches.UploadTemplates();
             Structures.Initialize();
             //Links.WorldBuilder.BuildTheWorld();
-            StartCoroutine(Map.InitializeMap());
+            if (LaunchMode == GameLaunchMode.NewGame)
+            {
+                CurrentGame = new Game();
+                StartCoroutine(new Map().InitializeMap());
+            }
+            else
+                Debug.Log("Game is loading");
             //foreach (Kernel _k in Map.Kernels)
             //    StartCoroutine(MapGenerator.LandscapeGenerator(_k));
         }
@@ -110,7 +118,18 @@ public class Settings : MonoBehaviour {
         /// <summary>
         /// Количество залежей ресурсов на один стержень
         /// </summary>
-        public static int DepositsQuantityParameter { get {return Random.Range(9,15);}}
+        public static int DepositsQuantityParameter { get {return UnityEngine.Random.Range(9,15);}}
         //public static List<ushort> ResorucesForWorldBuilding { get { return new List<ushort>() { 1, 2, 4, 5 }; }}
+    }
+}
+public enum GameLaunchMode {NewGame,LoadGame}
+[System.Serializable]
+public class Game
+{
+    public Guid id { get; private set; }
+
+    public Game()
+    {
+        id = Guid.NewGuid();
     }
 }

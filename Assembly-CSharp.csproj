@@ -60,6 +60,7 @@
      <Compile Include="Assets\Common_scripts\MapGenerator.cs" />
      <Compile Include="Assets\Common_scripts\NameValue.cs" />
      <Compile Include="Assets\Common_scripts\Player_control_script.cs" />
+     <Compile Include="Assets\Common_scripts\SaveLoad.cs" />
      <Compile Include="Assets\Common_scripts\Settings.cs" />
      <Compile Include="Assets\Objects\Brick\Object_Scripts\Brick.cs" />
      <Compile Include="Assets\Objects\Brick\Object_Scripts\Kernel.cs" />
@@ -88,6 +89,7 @@
      <Compile Include="Assets\Objects\Zone\Zone_old.cs" />
      <Compile Include="Assets\Objects\Zone\ZoneController.cs" />
      <Compile Include="Assets\Objects\Zone\ZoneInteractor.cs" />
+     <Compile Include="Assets\UI\Scripts\GameLoader.cs" />
      <Compile Include="Assets\UI\Scripts\StartNewGame.cs" />
      <Compile Include="Assets\UI\Scripts\UI.cs" />
      <Compile Include="Assets\UI\Scripts\UICameraFollower.cs" />
@@ -96,6 +98,7 @@
      <Compile Include="Assets\UI\Scripts\UIInfoFrame.cs" />
      <Compile Include="Assets\UI\Scripts\UIMainMenu.cs" />
      <Compile Include="Assets\UI\Scripts\UIMainMenuElement.cs" />
+     <Compile Include="Assets\UI\Scripts\UISaveGame.cs" />
      <Compile Include="Assets\UI\Scripts\UISettings.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
