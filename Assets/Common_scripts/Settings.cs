@@ -17,6 +17,8 @@ public class Settings : MonoBehaviour {
     public static string BuildingsStoragePath { get; private set; }
     public static string TexturesFolderPath { get; private set; }
     public static List<string> ComplexObjectsTags { get; private set; }
+    public static string GameSavingPath { get { return "/SavedGames/Game.svg"; } }
+    public static string MapSavingPath { get { return "/SavedGames/Map.svg"; } }
     
     public static byte KernelSize { get; private set; }
     public static byte MapBlurParam { get; private set; }
@@ -49,6 +51,8 @@ public class Settings : MonoBehaviour {
     //Technical
     private bool ParamsNotSet = true;
     private string scr = "Settings";
+    public static GameLaunchMode LaunchMode = GameLaunchMode.NewGame;
+    public static Game CurrentGame;
 
     void Start()
     {
@@ -96,7 +100,13 @@ public class Settings : MonoBehaviour {
             Workbenches.UploadTemplates();
             Structures.Initialize();
             //Links.WorldBuilder.BuildTheWorld();
-            StartCoroutine(Map.InitializeMap());
+            if (LaunchMode == GameLaunchMode.NewGame)
+            {
+                CurrentGame = new Game();
+                StartCoroutine(new Map().InitializeMap());
+            }
+            else
+                Debug.Log("Game is loading");
             //foreach (Kernel _k in Map.Kernels)
             //    StartCoroutine(MapGenerator.LandscapeGenerator(_k));
         }
@@ -114,3 +124,4 @@ public class Settings : MonoBehaviour {
         //public static List<ushort> ResorucesForWorldBuilding { get { return new List<ushort>() { 1, 2, 4, 5 }; }}
     }
 }
+public enum GameLaunchMode { NewGame, LoadGame }

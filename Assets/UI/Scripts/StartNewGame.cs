@@ -10,5 +10,6 @@ public class StartNewGame : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         SceneManager.LoadScene("First_asset", LoadSceneMode.Single);
+        Debug.Log(Application.persistentDataPath);
     }
 }
