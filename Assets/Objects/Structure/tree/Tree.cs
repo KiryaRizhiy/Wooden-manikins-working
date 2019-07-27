@@ -12,6 +12,12 @@ public class Tree : MonoBehaviour {
             return _Branches.Count > 0;
         }
     }
+    public void CutTree()
+    {
+        StopAllCoroutines();
+        ZoneController.RemoveComponent(gameObject);
+        Destroy(gameObject);
+    }
     public void CutBranches()
     {
         foreach (GameObject _b in _Branches)

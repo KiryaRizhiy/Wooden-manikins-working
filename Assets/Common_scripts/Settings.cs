@@ -80,11 +80,11 @@ public class Settings : MonoBehaviour {
             KernelSize = 27;
             MapBlurParam = 0;
             MapBlurCoeffitient = 0.06f;
-            MapHeight = 20;
+            MapHeight = 4;
             WaterLevel = 5;
             MapSoilLevel = 18;
             MapLandscapeScale = 1;
-            BasicMapRadius = 1;
+            BasicMapRadius = 0;
             MaxMapRadius = 1000;
             NoizeShift = Random.Range(0, MaxMapRadius * KernelSize);
             MenuTextFont = _MenuTextFont;

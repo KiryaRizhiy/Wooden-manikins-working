@@ -2,11 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Kernel : MonoBehaviour {
 
     private string scr = "Kernel";
     private List<Brick[,]> Layers = new List<Brick[,]>();
+    public bool buildingOver { get; private set; }
+    public Brick CentralVisibleBrick
+    {
+        get
+        {
+            return Layers.Find(x => x[0, 0].gameObject.activeInHierarchy)[0,0];
+        }
+    }
     public Vector2 KernelCoordinates
     {
         get
@@ -17,11 +26,18 @@ public class Kernel : MonoBehaviour {
 
     void Start()
     {
+        buildingOver = false;
         for (int h = 0; h < Settings.MapHeight; h++)
         {
             Layers.Add(new Brick[Settings.KernelSize, Settings.KernelSize]);
         }
         StartCoroutine(MapGenerator.LandscapeGenerator(this));
+    }
+
+    public void Built()
+    {
+        Debug.Log(gameObject.name + " built");
+        buildingOver = true;
     }
 
     public Brick GetKernelBrick(Vector3 Coordinates)

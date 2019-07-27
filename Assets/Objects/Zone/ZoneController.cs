@@ -252,9 +252,13 @@ public static class ZoneController {
         public virtual void RemoveBrick(GameObject _b)
         {
             _Bricks.RemoveAll(x => x == _b);
-            _b.GetComponent<Brick>().SetZoneId();
+            //_b.GetComponent<Brick>().SetZoneId();
             if (_Bricks.Count == 0)
                 Disable();
+        }
+        public virtual bool Contains(GameObject _b)
+        {
+            return _Bricks.Find(x => x == _b) != null;
         }
         public virtual void Disable()
         {

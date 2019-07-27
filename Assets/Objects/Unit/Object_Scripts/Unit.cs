@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Unit: MonoBehaviour
 {
@@ -20,6 +21,13 @@ public class Unit: MonoBehaviour
         }
     }
     private int _CurrProcID;
+    private NavMeshAgent WalkingModule
+    {
+        get
+        {
+            return GetComponent<NavMeshAgent>();
+        }
+    }
 
     // Характеристики состояния:
     private byte _Hunger, _Sleepy, _Tried, _Hygiene, _Mood, _Age;
@@ -142,6 +150,10 @@ public class Unit: MonoBehaviour
         return false;
     }
 
+    public void GoTo(Vector3 Coordinates)
+    {
+        WalkingModule.SetDestination(Coordinates);
+    }
     public void TakeTool(Resource NewTool)
     {
         Tool = NewTool;
@@ -353,7 +365,7 @@ public class Unit: MonoBehaviour
         Log.Notice(scrad,"Processing ...");
         if (Act._WorkFlow._SetTargetBusy)
         {
-            Act._Target.GetComponent<Unit>().Busy = true;
+            Act._Target.GetComponent<Basic>().Busy = true;
         }
         if (Act._WorkFlow._ActorGraphics != null)
             GetComponent<Animator>().SetBool(Act._WorkFlow._ActorGraphics, true);
@@ -370,7 +382,7 @@ public class Unit: MonoBehaviour
         }
         if (Act._WorkFlow._SetTargetBusy)
         {
-            Act._Target.GetComponent<Unit>().Busy = false;
+            Act._Target.GetComponent<Basic>().Busy = false;
         }
         if (Act._Conditions.RequiredTool != ResourceTypeClassification.Resource)
         {

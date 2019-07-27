@@ -1,11 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public static class Map {
 
     private static string scr = "Map";
+    private static bool _mapBuilt
+    {
+        get
+        {
+            foreach (Kernel _k in Kernels)
+                if (!_k.buildingOver)
+                    return false;
+            return true;
+        }
+    }
     public static List<Kernel> Kernels = new List<Kernel>();
+    private static NavMeshSurface Navigation
+    {
+        get
+        {
+            if (Kernels[0].CentralVisibleBrick.GetComponent<NavMeshSurface>() != null)
+                return Kernels[0].CentralVisibleBrick.GetComponent<NavMeshSurface>();
+            else
+            {
+                return Kernels[0].CentralVisibleBrick.gameObject.AddComponent<NavMeshSurface>();
+            }
+        }
+    }
 
     public static IEnumerator InitializeMap()
     {
@@ -15,6 +38,9 @@ public static class Map {
                 AddKernel(new Vector2(i, j));
                 yield return new WaitForEndOfFrame();
             }
+        while (!_mapBuilt)
+            yield return new WaitForEndOfFrame();
+        Navigation.BuildNavMesh();
         Debug.Log("Map building is over");
     }
 

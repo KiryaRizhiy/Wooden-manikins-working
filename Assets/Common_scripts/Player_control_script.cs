@@ -174,17 +174,12 @@ public class Player_control_script : MonoBehaviour{
                 Log.Notice(scr,"Walking");
                 if ((_IsHit) && (_Hit.normal == Vector3.up))
                 {
-                    //if (Mathf.Round(_Hit.point.x) < 0)
-                        _Normal.x = Mathf.RoundToInt(_Hit.point.x);
-                    //else
-                    //    _Normal.x = Mathf.Ceil(_Hit.point.x);
-                    //if (Mathf.Round(_Hit.point.z) < 0)
-                        _Normal.z = Mathf.RoundToInt(_Hit.point.z);
-                    //else
-                    //    _Normal.z = Mathf.Ceil(_Hit.point.z);
-                    _Normal.y = _Hit.point.y;
-                    Log.Notice(scr,"Waybuilder call");
-                    _ActorUnit.GetComponent<RouteBuilder>().Build(_Normal);
+                    //_Normal.x = Mathf.RoundToInt(_Hit.point.x);
+                    //_Normal.z = Mathf.RoundToInt(_Hit.point.z);
+                    //_Normal.y = _Hit.point.y;
+                    Log.Notice(scr, "Waybuilder call");
+                    //_ActorUnit.GetComponent<RouteBuilder>().Build(_Normal);
+                    _ActorUnit.GetComponent<Unit>().GoTo(_Hit.point);
                 }
             }
             if (Input.GetMouseButton(1))//Massive reject
@@ -346,7 +341,7 @@ public class Player_control_script : MonoBehaviour{
         }
         CancelZoneCreation();
     }
-    public void CancelZoneCreation()
+   public void CancelZoneCreation()
     {
         if (_ZoneEndPoint != null)
         {

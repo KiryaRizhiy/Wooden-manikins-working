@@ -99,5 +99,6 @@ public static class MapGenerator {
             if (Time.deltaTime > 0.5f)
                 yield return new WaitForSeconds(0.3f);
         }
+        _k.Built();
     }
 }

@@ -393,6 +393,7 @@ public class ProcessManager : MonoBehaviour {
             : base("Building : " + BuidlingPhantom.MasterObject.name)
         {
             BuidlingPhantom.Hide();
+            _BuidlingTemplate = BuidlingPhantom;
             _Structure = new Structure(_BuidlingTemplate);
             _Structure.State = StructureState.Building;
             ZoneController.Mine _Pit = new ZoneController.Mine(BuidlingPhantom);
@@ -400,7 +401,6 @@ public class ProcessManager : MonoBehaviour {
             _DiggingBuildingPit = new Mining(_Pit.Name, _Storage.Name);
             _AllProcesses.Add(_DiggingBuildingPit.Start());
             //Status = "paused";
-            _BuidlingTemplate = BuidlingPhantom;
             _BuidlingTemplate.MasterObject.transform.position -= Vector3.up * 0.05f;
             _BuildingElementsEnumerator = _BuidlingTemplate.Elements.GetEnumerator();
             _WorkbenchesEnumerator = _BuidlingTemplate.ChildConstructions.GetEnumerator();
@@ -690,9 +690,9 @@ public class ProcessManager : MonoBehaviour {
                     if (Functions.IsNodeNotEmpty(_Workflow[0].ChildNodes.Item(1).ChildNodes.Item(3), scracd))
                         _InfluenceWisdom = int.Parse(_Workflow[0].ChildNodes.Item(1).ChildNodes.Item(3).InnerText);
                 }
-                if (!Functions.IsNodeNotEmpty(_Workflow[1].ChildNodes.Item(0), scracd))
+                if (Functions.IsNodeNotEmpty(_Workflow[1].ChildNodes.Item(0), scracd))
                     _SetActorBusy = true;
-                if (!Functions.IsNodeNotEmpty(_Workflow[1].ChildNodes.Item(1), scracd))
+                if (Functions.IsNodeNotEmpty(_Workflow[1].ChildNodes.Item(1), scracd))
                     _SetTargetBusy = true;
                 if (Functions.IsNodeNotEmpty(_Workflow[2].ChildNodes.Item(0), scracd))
                     _ActorGraphics = _Workflow[2].ChildNodes.Item(0).InnerText;

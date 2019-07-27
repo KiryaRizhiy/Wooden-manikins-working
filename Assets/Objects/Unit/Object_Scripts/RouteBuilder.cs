@@ -15,7 +15,7 @@ public class RouteBuilder : MonoBehaviour {
     private List<Vector3> _Route = new List<Vector3>();
     private Transform _Transform;
     private int _RecurcionDepth;
-    private int mask = (1<<9)|(1<<11);
+    private int mask = (1 << 9) | (1 << 10) | (1 << 11) | (1 << 12);
     private Vector3 _Target;
     private string scr = "UnitRoute", scrw = "UnitRouteWalking";
     
@@ -81,17 +81,9 @@ public class RouteBuilder : MonoBehaviour {
         _RecurcionDepth = 0;
         _Route.Clear();
         Physics.Raycast(GetComponent<Transform>().position, Vector3.down, out _Hit,10,mask);
-        if (Mathf.Round(_Hit.point.x) > 0)
-            _xpos = Mathf.Floor(_Hit.point.x);
-        else
-            _xpos = Mathf.Ceil(_Hit.point.x);
-        if (Mathf.Round(_Hit.point.z) > 0)
-            _zpos = Mathf.Floor(_Hit.point.z);
-        else
-            _zpos = Mathf.Ceil(_Hit.point.z);
-        _Route.Add(_Hit.point);
+        _Route.Add(BindVectorToGrid(_Hit.point));
         _Route.Add(new Vector3(_xpos, _Hit.point.y, _zpos));
-        StartCoroutine("BuildWay",new Vector3[2]{(new Vector3(_xpos, _Hit.point.y, _zpos)),_Aim});
+        StartCoroutine("BuildWay", new Vector3[2] { (new Vector3(_xpos, _Hit.point.y, _zpos)), BindVectorToGrid(_Aim) });
         //StartCoroutine("BuildWay", new Vector3[2] { _Hit.point, _Aim });
     }
     IEnumerator BuildRec(Vector3[] BypassCoordinates)
@@ -112,8 +104,7 @@ public class RouteBuilder : MonoBehaviour {
         List<RaycastHit> _HitArr = new List<RaycastHit>();
         Vector3 _CurrentPositon = StartNTarget[0], _StartPosition = StartNTarget[0], _Target = StartNTarget[1];
         Vector2 _CurrPos2D;
-        if (LogWriting)
-            Log.Notice(scr,"Basic way building iteration " + _CyclesDepth + " from " + StartNTarget[0] + " to " + StartNTarget[1] + " started");
+        Log.Notice(scr, "Basic way building iteration " + _CyclesDepth + " from " + StartNTarget[0] + " to " + StartNTarget[1] + " started");
         while (_CurrentPositon != _Target)
         {
             _CurrPos2D = NextPosition(new Vector2(_StartPosition.x, _StartPosition.z), new Vector2(_Target.x, _Target.z), new Vector2(_CurrentPositon.x, _CurrentPositon.z));
@@ -506,8 +497,7 @@ public class RouteBuilder : MonoBehaviour {
     }
     private Vector2 NextPosition(Vector2 _StartPosition, Vector2 _TargetPosition, Vector2 _CurrentPosition2D)
     {
-        if (LogWriting)
-            Log.Notice(scr,"Current position is" + _CurrentPosition2D + "Target position is " + _TargetPosition);
+        Log.Notice(scr,"Current position is" + _CurrentPosition2D + "Target position is " + _TargetPosition);
         float _MinDistanceToTarget = Mathf.Infinity, _DistanceToTarget = 0;
         int _MinI = 2, _MinJ = 2;
         for (int i = -1; i < 2; i = i+1)
@@ -528,9 +518,20 @@ public class RouteBuilder : MonoBehaviour {
         }
         _CurrentPosition2D.x = _CurrentPosition2D.x + _MinI;
         _CurrentPosition2D.y = _CurrentPosition2D.y + _MinJ;
-        if (LogWriting)
-            Log.Notice(scr,"Next position is" + _CurrentPosition2D);
+        Log.Notice(scr, "Next position is" + _CurrentPosition2D);
         return _CurrentPosition2D;
+    }
+    private Vector3 BindVectorToGrid(Vector3 OriginalVector)
+    {
+        if (Mathf.Round(OriginalVector.x) > 0)
+            _xpos = Mathf.Floor(OriginalVector.x);
+        else
+            _xpos = Mathf.Ceil(OriginalVector.x);
+        if (Mathf.Round(OriginalVector.z) > 0)
+            _zpos = Mathf.Floor(OriginalVector.z);
+        else
+            _zpos = Mathf.Ceil(OriginalVector.z);
+        return new Vector3(_xpos, OriginalVector.y, _zpos);
     }
     private Vector3[] DotsForRaycast(Vector3 _Position, Vector3 _Aim) //Убрать левую и правую точки из вывода. Они тут не нужны
     {
